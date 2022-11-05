@@ -31,11 +31,6 @@ const Footer = () => {
                                         원칙
                                     </Link>
                                 </li>
-                                <li>
-                                    <a href="https://notion.deering.co" className="footer-links">
-                                        디어 소개
-                                    </a>
-                                </li>
                             </div>
                             <button className="lg:pr-8 text-2xl" onClick={scrollToTop}>
                                 <BsFillArrowUpCircleFill />
