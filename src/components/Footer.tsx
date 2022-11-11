@@ -17,11 +17,6 @@ const Footer = () => {
                         <div className="mx-auto max-w-5xl flex justify-between items-center">
                             <div className="lg:pl-8 flex space-x-3 items-center">
                                 <li>
-                                    <Link to="/books" className="footer-links">
-                                        인생 책
-                                    </Link>
-                                </li>
-                                <li>
                                     <Link to="/bookshelf" className="footer-links">
                                         책장
                                     </Link>
