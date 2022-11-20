@@ -26,6 +26,16 @@ const Footer = () => {
                                         원칙
                                     </Link>
                                 </li>
+                                <li>
+                                    <a
+                                        href="https://github.com/DongeunPaeng"
+                                        className="footer-links"
+                                        rel="noreferrer"
+                                        target="_blank"
+                                    >
+                                        GitHub
+                                    </a>
+                                </li>
                             </div>
                             <button className="lg:pr-8 text-2xl" onClick={scrollToTop}>
                                 <BsFillArrowUpCircleFill />
