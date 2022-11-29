@@ -15,18 +15,6 @@ const PostDetailPage: React.FunctionComponent<PostDetailPageProps> = ({
     const [working, setWorking] = useState(true);
     const postId = pathname.split("/")[2];
 
-    const setMetaTags = ({
-        title = "Dongeun Paeng",
-        description = "dongeunpaeng.com",
-    }) => {
-        document
-            ?.querySelector('meta[property="og:title"]')
-            ?.setAttribute("content", `${title}`);
-        document
-            ?.querySelector('meta[property="og:description"]')
-            ?.setAttribute("content", description);
-    };
-
     const deletePost = () => {
         const isConfirmed = window.confirm("Are you sure to delete this post?");
         if (isConfirmed) {
@@ -52,10 +40,6 @@ const PostDetailPage: React.FunctionComponent<PostDetailPageProps> = ({
                 .then((res) => {
                     const post = res.data.post;
                     setPost(post);
-                    setMetaTags({
-                        title: post.title,
-                        description: post.title,
-                    });
                 })
                 .catch((err) => alert(err))
                 .finally(() => {
@@ -63,9 +47,6 @@ const PostDetailPage: React.FunctionComponent<PostDetailPageProps> = ({
                 });
         };
         getPost();
-        return () => {
-            setMetaTags({});
-        };
     }, [postId]);
 
     const writtenDate: DateTime | undefined = post
