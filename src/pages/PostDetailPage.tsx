@@ -6,6 +6,7 @@ import Greetings from "../components/Greetings";
 import axios from "axios";
 import DOMPurify from "dompurify";
 import type { Post, PostDetailPageProps } from "types";
+import { Helmet } from "react-helmet";
 
 const PostDetailPage: React.FunctionComponent<PostDetailPageProps> = ({
     location: { pathname, history },
@@ -58,6 +59,9 @@ const PostDetailPage: React.FunctionComponent<PostDetailPageProps> = ({
 
     return (
         <>
+            <Helmet>
+                <title>{post?.title || "Dongeun Paeng"}</title>
+            </Helmet>
             <div>
                 <Greetings title="Here's my thought..." subtitle="What's yours?" />
                 {working ? null : post ? (
@@ -65,7 +69,7 @@ const PostDetailPage: React.FunctionComponent<PostDetailPageProps> = ({
                         <div className="w-full pb-6">
                             <div className="flex justify-between">
                                 <div>
-                                    <div className="text-xl text-gray-800">{post.title}</div>
+                                    <h1 className="text-xl text-gray-800">{post.title}</h1>
                                     <div className="text-sm text-gray-400">
                                         <span>by</span> {post.author}
                                         {post.deleted ? "(deleted)" : ""}
