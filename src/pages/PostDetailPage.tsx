@@ -5,14 +5,16 @@ import { DateTime, Interval } from "luxon";
 import Greetings from "../components/Greetings";
 import axios from "axios";
 import DOMPurify from "dompurify";
-import type { Post, PostDetailPageProps } from "types";
+import type * as T from "types";
 import { Helmet } from "react-helmet";
+import Post from "../components/Post";
 
-const PostDetailPage: React.FunctionComponent<PostDetailPageProps> = ({
+const PostDetailPage: React.FunctionComponent<T.PostDetailPageProps> = ({
     location: { pathname, history },
 }) => {
     const { user, accessToken } = useUser();
-    const [post, setPost] = useState<Post | undefined>(undefined);
+    const [post, setPost] = useState<T.Post | undefined>();
+    const [previousPost, setPreviousPost] = useState<T.Post | undefined>();
     const [working, setWorking] = useState(true);
     const postId = pathname.split("/")[2];
 
@@ -40,7 +42,9 @@ const PostDetailPage: React.FunctionComponent<PostDetailPageProps> = ({
                 .get(`/api/post/${postId}`)
                 .then((res) => {
                     const post = res.data.post;
+                    const previousPost = res.data.previousPost;
                     setPost(post);
+                    setPreviousPost(previousPost);
                 })
                 .catch((err) => alert(err))
                 .finally(() => {
@@ -94,6 +98,20 @@ const PostDetailPage: React.FunctionComponent<PostDetailPageProps> = ({
                                     __html: DOMPurify.sanitize(post.post),
                                 }}
                             />
+                            {previousPost ? (
+                                <div id="recommended_post" className="mt-10 px-4">
+                                    <p className="text-gray-400 text-sm py-1 border-gray-200 border-0 border-t">
+                                        READ THIS NEXT
+                                    </p>
+                                    <Post
+                                        key={previousPost.id}
+                                        draft={false}
+                                        post={previousPost}
+                                    />
+                                </div>
+                            ) : (
+                                <></>
+                            )}
                         </div>
                     </div>
                 ) : (
