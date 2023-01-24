@@ -9,6 +9,7 @@ const principles = [
     "죽는 날이 반드시 오고, 나는 완전히 사라진다.",
     "가까운 사람들이 내 감정을 좌우할 때 주의해라.",
     "걱정을 하느니 명상과 기도를 해라.",
+    "소식과 단식을 습관화해라.",
     "가장 좋은 때에, 가장 좋은 방법으로 이루실 주님을 믿어라.",
     "최고의 기업가가 되고 싶은가? 최고가 무엇이며 왜 최고여야 하는가?",
 ];
@@ -27,7 +28,7 @@ const PrinciplesPage = () => {
                     </li>
                 ))}
             </ul>
-            <div className="text-sm text-gray-400 mb-2">last updated: 2022-11-12</div>
+            <div className="text-sm text-gray-400 mb-2">last updated: 2023-01-24</div>
         </div>
     );
 };
