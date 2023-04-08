@@ -23,8 +23,10 @@ const Body: React.FunctionComponent<BodyProps> = ({
         if (query === "") {
             setFilteredPosts(posts);
         } else {
-            const newFilteredPosts = posts.filter((post) =>
-                post.title.toLowerCase().includes(query)
+            const newFilteredPosts = posts.filter(
+                (post) =>
+                    post.title.toLowerCase().includes(query) ||
+                    post.post.toLowerCase().includes(query)
             );
             setFilteredPosts(newFilteredPosts);
         }
