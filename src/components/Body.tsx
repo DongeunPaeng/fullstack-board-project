@@ -67,7 +67,6 @@ const Body: React.FunctionComponent<BodyProps> = ({
                             onChange={handleSearch}
                             placeholder="Search"
                             className="my-4 md:w-1/2 w-full p-2 border border-gray-300 rounded-md"
-                        // TODO: change width to half of the page when in large window.
                         />
                     </div>
                     <Posts posts={searchQuery ? filteredPosts : posts} />
