@@ -23,7 +23,7 @@ const TopNavBar = () => {
         <nav>
             <div>
                 <Link to="/" className="font-extrabold text-gray-800 items-center">
-                    TEST!! R U THERE?
+                    Dongeun Paeng
                 </Link>
             </div>
             <div className="mt-4 items-center sm:flex sm:justify-between">
