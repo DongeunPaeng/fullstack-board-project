@@ -29,6 +29,6 @@ jobs:
 
       - name: Install dependencies and build frontend
         run: |
-          npm ci
-          npm run build
+          yarn install
+          yarn build
           echo "TESTING: added region..."
