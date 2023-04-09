@@ -52,7 +52,7 @@ jobs:
             --application-name blog-react \
             --deployment-config-name CodeDeployDefault.AllAtOnce \
             --deployment-group-name blog-react-deploy-group-1 \
-            --s3-location bucket=${{ env.S3BUCKET }},bundleType=zip,key=build-${{ github.sha }}.zip \
+            --s3-location bucket=${{ env.S3BUCKET }},bundleType=zip,key=blog/build-${{ github.sha }}.zip \
             --query "deploymentId" \
             --output text)
 
