@@ -56,4 +56,4 @@ jobs:
             --query "deploymentId" \
             --output text)
 
-        echo "DEPLOYMENT_ID=$DEPLOYMENT_ID" >> $GITHUB_ENV
+          echo "DEPLOYMENT_ID=$DEPLOYMENT_ID" >> $GITHUB_ENV
