@@ -6,6 +6,7 @@ on:
 
 env:
   AWS_REGION: ap-northeast-2
+  S3BUCKET: github-actions-deploy-react
 
 jobs:
   deploy:
@@ -34,3 +35,13 @@ jobs:
         run: |
           yarn install
           yarn build
+
+      - name: Make a zip file
+        run: zip -r build-${{ github.sha }}.zip build/
+
+      - name: Upload versioned build.zip to S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 cp build-${{ github.sha }}.zip s3://${{ env.S3BUCKET }}/blog/build-${{ github.sha }}.zip
