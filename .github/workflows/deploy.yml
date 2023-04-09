@@ -45,3 +45,15 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           aws s3 cp build-${{ github.sha }}.zip s3://${{ env.S3BUCKET }}/blog/build-${{ github.sha }}.zip
+
+      - name: Create AWS CodeDeploy deployment
+        run: |
+          DEPLOYMENT_ID=$(aws deploy create-deployment \
+            --application-name blog-react \
+            --deployment-config-name CodeDeployDefault.AllAtOnce \
+            --deployment-group-name blog-react-deploy-group-1 \
+            --s3-location bucket=${{ env.S3BUCKET }},bundleType=zip,key=build-${{ github.sha }}.zip \
+            --query "deploymentId" \
+            --output text)
+
+        echo "DEPLOYMENT_ID=$DEPLOYMENT_ID" >> $GITHUB_ENV
