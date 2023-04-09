@@ -21,6 +21,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "19"
+        run: |
+          node --version
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -33,4 +35,3 @@ jobs:
         run: |
           yarn install
           yarn build
-          echo "TESTING: added region..."
