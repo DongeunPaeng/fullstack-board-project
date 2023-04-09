@@ -37,7 +37,9 @@ jobs:
           yarn build
 
       - name: Copy appspec.yml to build folder
-        run: cp appspec.yml build/
+        run: |
+          cp appspec.yml build/
+          cp infra/scripts/beforeinstall.sh build/
 
       - name: Make a zip file
         run: zip -r build-${{ github.sha }}.zip build/
