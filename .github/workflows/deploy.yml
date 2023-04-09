@@ -22,6 +22,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
 
       - name: Install dependencies and build frontend
         run: |
@@ -29,4 +30,4 @@ jobs:
           npm ci
           npm run build
           cd ..
-          echo "TESTING: 1st run"
+          echo "TESTING: added region..."
