@@ -4,10 +4,12 @@ import { useUser } from "../providers/UserProvider";
 import { DateTime, Interval } from "luxon";
 import Greetings from "../components/Greetings";
 import axios from "axios";
-import DOMPurify from "dompurify";
 import type * as T from "types";
 import { Helmet } from "react-helmet";
 import Post from "../components/Post";
+import ReactHtmlParser from "react-html-parser";
+import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const PostDetailPage: React.FunctionComponent<T.PostDetailPageProps> = ({
     location: { pathname, history },
@@ -61,6 +63,22 @@ const PostDetailPage: React.FunctionComponent<T.PostDetailPageProps> = ({
     const i = writtenDate ? Interval.fromDateTimes(birthDate, writtenDate) : null;
     const age: number | null = i ? Math.floor(i.length("years")) : null;
 
+    const transform = (node: any, index: any) => {
+        if (node.type === "tag" && node.name === "pre") {
+            const codeString = node.children[0]?.data || "";
+            return (
+                <SyntaxHighlighter
+                    key={index}
+                    language="typescript"
+                    style={vscDarkPlus}
+                    customStyle={{ borderRadius: "5px", marginBottom: "16px" }}
+                >
+                    {codeString}
+                </SyntaxHighlighter>
+            );
+        }
+    };
+
     return (
         <>
             <Helmet>
@@ -92,12 +110,9 @@ const PostDetailPage: React.FunctionComponent<T.PostDetailPageProps> = ({
                                     </div>
                                 ) : null}
                             </div>
-                            <div
-                                className="mb-4 text-base text-gray-600"
-                                dangerouslySetInnerHTML={{
-                                    __html: DOMPurify.sanitize(post.post),
-                                }}
-                            />
+                            <div className="mb-4 text-base text-gray-600">
+                                {ReactHtmlParser(post.post, { transform })}
+                            </div>
                             {previousPost ? (
                                 <div id="recommended_post" className="mt-10 px-4">
                                     <p className="text-gray-400 text-sm py-1 border-gray-200 border-0 border-t">
