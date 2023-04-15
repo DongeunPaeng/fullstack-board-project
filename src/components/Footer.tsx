@@ -27,6 +27,11 @@ const Footer = () => {
                                     </Link>
                                 </li>
                                 <li>
+                                    <Link to="/go" className="footer-links">
+                                        바둑
+                                    </Link>
+                                </li>
+                                <li>
                                     <a
                                         href="https://github.com/DongeunPaeng"
                                         className="footer-links"

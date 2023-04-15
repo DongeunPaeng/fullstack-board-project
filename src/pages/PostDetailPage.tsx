@@ -10,6 +10,8 @@ import Post from "../components/Post";
 import HtmlParser, { processNodes, Transform } from "react-html-parser";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import KaTex from '@matejmazur/react-katex';
+import 'katex/dist/katex.min.css';
 
 const PostDetailPage: React.FunctionComponent<T.PostDetailPageProps> = ({
     location: { pathname, history },
@@ -64,6 +66,9 @@ const PostDetailPage: React.FunctionComponent<T.PostDetailPageProps> = ({
     const age: number | null = i ? Math.floor(i.length("years")) : null;
 
     const transform: Transform = (node, index) => {
+        if (node.type === 'tag' && node.name === 'span' && node.attribs.class === 'ql-formula')
+            return <KaTex key={index} math={node.attribs['data-value']} />;
+
         if (node.type === "tag" && node.name === "pre") {
             const codeString = node.children[0]?.data || "";
             return (
