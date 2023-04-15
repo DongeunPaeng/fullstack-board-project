@@ -27,8 +27,8 @@ const Footer = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/go" className="footer-links">
-                                        바둑
+                                    <Link to="/game" className="footer-links">
+                                        게임
                                     </Link>
                                 </li>
                                 <li>

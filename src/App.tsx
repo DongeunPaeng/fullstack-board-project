@@ -9,7 +9,7 @@ import EditPage from "./pages/EditPage";
 import PostDetailPage from "./pages/PostDetailPage";
 import MyPagePage from "./pages/MyPagePage";
 import PrinciplesPage from "./pages/PrinciplesPage";
-import GoPage from "./pages/GoPage";
+import GamePage from "./pages/GamePage";
 import BookShelfPage from "./pages/BookShelfPage";
 import DraftPage from "./pages/DraftPage";
 import ErrorPage from "./pages/ErrorPage";
@@ -42,7 +42,7 @@ const App = () => {
                         <Route path="/find-password" component={FindPasswordPage} />
                         <Route path="/posts/:id" component={PostDetailPage} />
                         <Route path="/principles" component={PrinciplesPage} />
-                        <Route path="/go" component={GoPage} />
+                        <Route path="/game" component={GamePage} />
                         <Route path="/bookshelf" component={BookShelfPage} />
                         <PrivateRoute path="/write" component={WritePage} />
                         <PrivateRoute path="/edit/:id" component={EditPage} />
