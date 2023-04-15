@@ -7,7 +7,7 @@ import axios from "axios";
 import type * as T from "types";
 import { Helmet } from "react-helmet";
 import Post from "../components/Post";
-import ReactHtmlParser from "react-html-parser";
+import HtmlParser, { processNodes, Transform } from "react-html-parser";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -63,7 +63,7 @@ const PostDetailPage: React.FunctionComponent<T.PostDetailPageProps> = ({
     const i = writtenDate ? Interval.fromDateTimes(birthDate, writtenDate) : null;
     const age: number | null = i ? Math.floor(i.length("years")) : null;
 
-    const transform = (node: any, index: any) => {
+    const transform: Transform = (node, index) => {
         if (node.type === "tag" && node.name === "pre") {
             const codeString = node.children[0]?.data || "";
             return (
@@ -76,6 +76,30 @@ const PostDetailPage: React.FunctionComponent<T.PostDetailPageProps> = ({
                     {codeString}
                 </SyntaxHighlighter>
             );
+        } else if (node.type === "tag" && node.name === "ul") {
+            const listProps = {
+                key: index,
+                className: "list-disc list-outside pl-5"
+            }
+            const children = processNodes(node.children, transform);
+            return React.createElement(node.name, listProps, children)
+        } else if (node.type === "tag" && node.name === "ol") {
+            const listProps = {
+                key: index,
+                className: "list-decimal list-outside pl-5"
+            }
+            const children = processNodes(node.children, transform);
+            return React.createElement(node.name, listProps, children)
+        } else if (node.type === 'tag' && node.name === 'li' && /^ql-indent-\d+$/.test(node.attribs.class)) {
+            const indentMatch = node.attribs.class.match(/ql-indent-(\d+)/);
+            const indentLevel = indentMatch ? parseInt(indentMatch[1], 10) : 0;
+            const marginLeft = 5 * indentLevel;
+            const listProps = {
+                key: index,
+                className: `list-disc list-outside ml-${marginLeft}`,
+            };
+            const children = processNodes(node.children, transform);
+            return React.createElement(node.name, listProps, children)
         }
     };
 
@@ -111,7 +135,7 @@ const PostDetailPage: React.FunctionComponent<T.PostDetailPageProps> = ({
                                 ) : null}
                             </div>
                             <div className="mb-4 text-base text-gray-600">
-                                {ReactHtmlParser(post.post, { transform })}
+                                {HtmlParser(post.post, { transform })}
                             </div>
                             {previousPost ? (
                                 <div id="recommended_post" className="mt-10 px-4">
