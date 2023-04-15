@@ -12,6 +12,7 @@ const principles = [
     "소식과 단식을 습관화해라.",
     "가장 좋은 때에, 가장 좋은 방법으로 이루실 주님을 믿어라.",
     "최고의 기업가가 되고 싶은가? 최고가 무엇이며 왜 최고여야 하는가?",
+    "20년 후를 위해 지금 무엇을 고민해야 하는지 생각해라.",
 ];
 
 const PrinciplesPage = () => {
@@ -28,7 +29,7 @@ const PrinciplesPage = () => {
                     </li>
                 ))}
             </ul>
-            <div className="text-sm text-gray-400 mb-2">last updated: 2023-01-24</div>
+            <div className="text-sm text-gray-400 mb-2">last updated: 2023-04-15</div>
         </div>
     );
 };
