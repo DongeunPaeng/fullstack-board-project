@@ -27,11 +27,6 @@ const Footer = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/game" className="footer-links">
-                                        게임
-                                    </Link>
-                                </li>
-                                <li>
                                     <a
                                         href="https://github.com/DongeunPaeng"
                                         className="footer-links"
