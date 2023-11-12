@@ -27,7 +27,7 @@ const PrinciplesPage = () => {
           </li>
         ))}
       </ul>
-      <div className="text-sm text-gray-400 mb-2">last updated: 2023-04-15</div>
+      <div className="text-sm text-gray-400 mb-2">last updated: 2023-11-12</div>
     </div>
   );
 };
