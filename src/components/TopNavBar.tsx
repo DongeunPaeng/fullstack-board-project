@@ -28,12 +28,6 @@ const TopNavBar = () => {
             </div>
             <div className="mt-4 items-center sm:flex sm:justify-between">
                 <div className="block">
-                    <Link className="topnavbar-links" to="/blogposts">
-                        <span className="mr-4">Thoughts</span>
-                    </Link>
-                    <Link className="topnavbar-links" to="/study">
-                        <span className="mr-4">StudyNotes</span>
-                    </Link>
                     {accessToken ? (
                         <Link className="topnavbar-links" to="/draft">
                             <span className="mr-4 text-gray-400">Draft</span>
