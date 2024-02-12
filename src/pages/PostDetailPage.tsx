@@ -19,6 +19,7 @@ const PostDetailPage: React.FunctionComponent<T.PostDetailPageProps> = ({
     const { user, accessToken } = useUser();
     const [post, setPost] = useState<T.Post | undefined>();
     const [previousPost, setPreviousPost] = useState<T.Post | undefined>();
+    const [nextPost, setNextPost] = useState<T.Post | undefined>();
     const [working, setWorking] = useState(true);
     const postId = pathname.split("/")[2];
 
@@ -47,8 +48,10 @@ const PostDetailPage: React.FunctionComponent<T.PostDetailPageProps> = ({
                 .then((res) => {
                     const post = res.data.post;
                     const previousPost = res.data.previousPost;
+                    const nextPost = res.data.nextPost;
                     setPost(post);
                     setPreviousPost(previousPost);
+                    setNextPost(nextPost);
                 })
                 .catch((err) => alert(err))
                 .finally(() => {
@@ -142,10 +145,24 @@ const PostDetailPage: React.FunctionComponent<T.PostDetailPageProps> = ({
                             <div className="mb-4 text-base text-gray-600">
                                 {HtmlParser(post.post, { transform })}
                             </div>
+                            {nextPost ? (
+                                <div id="recommended_post" className="mt-10 px-4">
+                                    <p className="text-gray-400 text-sm py-1 border-gray-200 border-0 border-t">
+                                        NEXT POST
+                                    </p>
+                                    <Post
+                                        key={nextPost.id}
+                                        draft={false}
+                                        post={nextPost}
+                                    />
+                                </div>
+                            ) : (
+                                <></>
+                            )}
                             {previousPost ? (
                                 <div id="recommended_post" className="mt-10 px-4">
                                     <p className="text-gray-400 text-sm py-1 border-gray-200 border-0 border-t">
-                                        READ THIS NEXT
+                                        PREVIOUS POST
                                     </p>
                                     <Post
                                         key={previousPost.id}
