@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { BsFillArrowUpCircleFill } from "react-icons/bs";
+import { BsFillArrowDownCircleFill } from "react-icons/bs";
 
 const Footer = () => {
-    const scrollToTop = () => {
+    const scrollToBottom = () => {
         window.scrollTo({
-            top: 0,
+            top: document.body.scrollHeight,
             behavior: "smooth",
         });
     };
@@ -37,8 +37,8 @@ const Footer = () => {
                                     </a>
                                 </li>
                             </div>
-                            <button className="lg:pr-8 text-2xl" onClick={scrollToTop}>
-                                <BsFillArrowUpCircleFill />
+                            <button className="lg:pr-8 text-2xl" onClick={scrollToBottom}>
+                                <BsFillArrowDownCircleFill />
                             </button>
                         </div>
                     </ul>
