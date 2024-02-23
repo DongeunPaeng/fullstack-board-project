@@ -7,7 +7,6 @@ const principles = [
   "운칠기삼",
   "진인사대천명",
   "전화위복",
-  "memento mori",
   "명상, 기도",
   "소식, 단식",
   "장기적 사고",
@@ -27,7 +26,7 @@ const PrinciplesPage = () => {
           </li>
         ))}
       </ul>
-      <div className="text-sm text-gray-400 mb-2">last updated: 2023-11-12</div>
+      <div className="text-sm text-gray-400 mb-2">last updated: 2024-02-23</div>
     </div>
   );
 };
