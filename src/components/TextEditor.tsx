@@ -97,7 +97,7 @@ const TextEditor: React.FunctionComponent<TextEditorProps> = ({ post }) => {
           <div className="text-sm text-gray-500 mb-1">Post</div>
           <ReactQuill
             theme="snow"
-            className="h-screen mb-28"
+            className="h-screen mb-28 lg:mb-10"
             value={value || ""}
             onChange={setValue}
             modules={modules}
