@@ -97,12 +97,12 @@ const TextEditor: React.FunctionComponent<TextEditorProps> = ({ post }) => {
           <div className="text-sm text-gray-500 mb-1">Post</div>
           <ReactQuill
             theme="snow"
-            className="h-[50vh] mb-10"
+            className="h-[50vh]"
             value={value || ""}
             onChange={setValue}
             modules={modules}
           />
-          <div className="flex justify-end items-center">
+          <div className="mt-10 flex justify-end items-center">
             <select
               className="py-2 mr-4 text-sm text-gray-900"
               name="type"
