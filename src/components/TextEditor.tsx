@@ -102,9 +102,9 @@ const TextEditor: React.FunctionComponent<TextEditorProps> = ({ post }) => {
             onChange={setValue}
             modules={modules}
           />
-          <div className="flex justify-end items-center">
+          <div className="mt-5 flex justify-end items-center">
             <select
-              className="mt-5 py-2 mr-4 text-sm text-gray-900"
+              className="py-2 mr-4 text-sm text-gray-900"
               name="type"
               id="type"
             >
@@ -112,7 +112,7 @@ const TextEditor: React.FunctionComponent<TextEditorProps> = ({ post }) => {
               <option value="study">Study</option>
             </select>
             <select
-              className="mt-5 py-2 mr-4 text-sm text-gray-900"
+              className="py-2 mr-4 text-sm text-gray-900"
               name="status"
               id="status"
             >
@@ -120,7 +120,7 @@ const TextEditor: React.FunctionComponent<TextEditorProps> = ({ post }) => {
               <option value="private">Private</option>
             </select>
             <button
-              className="mt-5 bg-gray-200 text-sm text-gray-900 py-2 px-3 rounded-md"
+              className="bg-gray-200 text-sm text-gray-900 py-2 px-3 rounded-md"
               type="submit"
             >
               Submit
